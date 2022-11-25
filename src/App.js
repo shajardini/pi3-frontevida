@@ -1,6 +1,6 @@
 import './App.css';
 import RouteApp from './routes';
-import Libras from './components/libras/Libras';
+
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       
       <RouteApp/>
-      <Libras/>
+     
       
     </div>
   );
