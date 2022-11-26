@@ -28,13 +28,6 @@
 }
 
 
-   
-.container img{
-    width: 100vw;
-    margin: auto;
-    text-align: center;
-}
-
 .article h1, h2{
     text-align: center;
     padding: 3px;
@@ -44,6 +37,7 @@
 
 .article h1{
     background-image: linear-gradient(to right, var(--color4),transparent);
+    width: 100%;
 
 }
 

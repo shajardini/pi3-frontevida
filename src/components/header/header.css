@@ -51,4 +51,14 @@ header{
         flex-direction: column;
         height: 30%;
         text-align: center;
-    }}
+    }
+    .menu a:hover{
+        
+        width: 100%;
+    
+    }
+
+
+
+
+}
