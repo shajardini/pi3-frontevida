@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { Link } from "react-router-dom"
 import './home.css'
-
 import img from '../../images/doe.png'
 
 var dataAtual = new Date();
@@ -54,6 +53,7 @@ export default function Home() {
                     
 
                         </article>
+                        
                     <div className="table-sangue">
                     <table>
                         <tr>
@@ -81,9 +81,10 @@ export default function Home() {
                             )
                         }
                     </table>
+                    </div>
                 </div>
                
-                        </div>
+                        
 
 
 

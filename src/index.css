@@ -26,7 +26,7 @@ body{
 
 @media screen and (max-width: 700px){
   main{
-    background: #ffa492 url(./images/doe.png);
+    background: #ffa492 url('./images/doe.png');
   background-repeat: repeat;
   background-position: center;
   background-size: 50%;
