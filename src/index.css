@@ -1,6 +1,7 @@
 *{
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
 }
 
 :root{
@@ -11,9 +12,25 @@
   --color5:  #ff5c71;
 }
 
-main{
-  background-color: #ffa492;}
 
+body{
+  /* background-color: #ffa492;} */
 
+  background: rgb(255, 185, 185) url('./images/doe.png');
+  background-repeat: repeat;
+  background-size: 50%;
+  background-position: center;
+  background-blend-mode: lighten;
+  /* background-size: 100% 100%; */
+}
 
+@media screen and (max-width: 700px){
+  main{
+    background: #ffa492 url(./images/doe.png);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 50%;
+  background-blend-mode: lighten;
+  }
+}
 

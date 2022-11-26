@@ -3,7 +3,7 @@ import api from "../../services/api"
 import { Link } from "react-router-dom"
 import './home.css'
 
-import img from '../../images/doesangue.jpg'
+import img from '../../images/doe.png'
 
 var dataAtual = new Date();
 var dia = dataAtual.getDate();
@@ -31,11 +31,15 @@ export default function Home() {
 
     return (
         <main>
-        <div>
+      
             <div className="container">
+            {/* <div className="imgapp">
+                    <img src = {img} alt="Doe sangue"/>
+                    </div> */}
                 <div className="article">
+                
                     <article>
-                        
+                   
                         <h1>Doação de sangue</h1>
                         <h2>Por que doar sangue?</h2>
 
@@ -47,10 +51,9 @@ export default function Home() {
 
                         <p>No Estado de São Paulo, a situação se encontra alarmante. Segundo informações da fundação Pró-Sangue, exibidas na tabela abaixo.</p>
 
-                    </article>
+                    
 
-                    <div className="imgapp">
-                    <img src = {img} alt="Doe sangue"/>
+                        </article>
                     <div className="table-sangue">
                     <table>
                         <tr>
@@ -79,7 +82,7 @@ export default function Home() {
                         }
                     </table>
                 </div>
-                      
+               
                         </div>
 
 
@@ -88,8 +91,8 @@ export default function Home() {
                 
 
                 
-            </div>
-        </div>
+           
+        
         </main>
     )
 }
