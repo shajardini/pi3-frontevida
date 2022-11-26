@@ -1,8 +1,21 @@
 footer {
      background-color: #ffa492;
+     position: absolute;
+     text-align: center;
+     padding: 5px;  
+     width: 100%;
    }
 
 footer > p{
     text-align: center;
 } 
 
+
+  @media(max-width: 700px){
+    
+    .footer{
+      position: relative;
+      margin-top: 30%;
+    }
+
+  }

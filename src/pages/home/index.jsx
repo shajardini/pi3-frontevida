@@ -3,6 +3,8 @@ import api from "../../services/api"
 import { Link } from "react-router-dom"
 import './home.css'
 
+import img from '../../images/doesangue.jpg'
+
 var dataAtual = new Date();
 var dia = dataAtual.getDate();
 var mes = (dataAtual.getMonth() + 1);
@@ -25,6 +27,7 @@ export default function Home() {
         loadEstado();
     }, [])
 
+    
 
     return (
         <main>
@@ -32,10 +35,13 @@ export default function Home() {
             <div className="container">
                 <div className="article">
                     <article>
+                        
                         <h1>Doação de sangue</h1>
                         <h2>Por que doar sangue?</h2>
 
                         <p>A doação de sangue é de extrema importância para a sociedade e pode ser classificado não apenas como um ato de solidariedade, mas de cidadania. De acordo com o Ministério da Saúde, uma única doação pode salvar até quatro vidas e é fundamental para ajudar pessoas que se submetem a tratamentos e intervenções médicas de grande porte e complexidade.</p>
+
+                        
 
                         <p>Além disso, o aumento de acidentes, violência e doenças demandam um número maior de transfusões, ocasionando uma busca constante por novos doadores. No Brasil, a quantidade de doadores de sangue corresponde a menos de 2% da população, sendo que a OMS - Organização Mundial de Saúde, aponta que, para atender a demanda transfusional no país, o ideal seria que 3% à 5% da população com idade entre 18 e 65 anos fossem   doadores voluntários.</p>
 
@@ -43,14 +49,9 @@ export default function Home() {
 
                     </article>
 
-
-
-
-
-                </div>
-                
-
-                <div className="table-sangue">
+                    <div className="imgapp">
+                    <img src = {img} alt="Doe sangue"/>
+                    <div className="table-sangue">
                     <table>
                         <tr>
                             <th colSpan={2}>Posição do estoque da Fundação PróSangue</th>
@@ -78,6 +79,15 @@ export default function Home() {
                         }
                     </table>
                 </div>
+                      
+                        </div>
+
+
+
+                </div>
+                
+
+                
             </div>
         </div>
         </main>

@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     background-color: white;
     max-width: 99%;
@@ -10,43 +10,38 @@
 }
 
 .article{ 
-    display: flex;
-    flex-direction: row;
     margin: auto;
     padding: 30px;
     border-radius: 5px;
-    text-align: center;
+    font-size: 20px;
     
  
 }
 
-.article p{
-    opacity: 1.0;
+
+.article ul, li{
     text-align: justify;
     text-indent: 50px;  
-    font-size: 20px;
-    padding: 5px;
+    padding: 2px;
+    list-style-position: inside;
 }
 
 
-   
-.article img{
-    width: 400px;
-    border: 3px solid black;
-    margin: auto;
-    text-align: center;
-}
-
-.article h1, h2{
-    text-align: center;
-    padding: 3px;
-   
-
-}
 
 .article h1{
     background-image: linear-gradient(to right, var(--color4),transparent);
+    margin-bottom: 5px;   
+    text-align: center;
+    padding: 3px;
+}
 
+.article h2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-align: left;
+    text-decoration: underline;
+    
 }
 
 table {
@@ -75,12 +70,8 @@ th {
 }
 
 @media screen and (max-width: 700px){
-    .container, .article{
-        flex-direction: column;
+    ul, li{
+        font-size: 16px;
+        text-align: left;
     }
-
-    .article img{
-        width: 80%;
-    }
-    
 }
