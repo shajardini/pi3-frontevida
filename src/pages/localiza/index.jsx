@@ -1,11 +1,11 @@
 
-import Map from "../../components/map";
+import Mapa from "../../components/map";
 
 export default function Localiza(){
     return (
         <div>
             <h1>Locais na proximidade</h1>
-            <Map/>
+            <Mapa/>
         </div>
     )
 } ;
