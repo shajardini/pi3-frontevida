@@ -3,6 +3,7 @@ import Home from './pages/home'
 import Header from './components/header'
 import Footer from './components/footer'
 import QuemPode from './pages/quempode'
+import Localiza from './pages/localiza'
 
 
 
@@ -15,6 +16,7 @@ export default function RouteApp(){
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/quempodedoar' element={<QuemPode/>}/>
+                <Route path='/proximidade' element={<Localiza/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>

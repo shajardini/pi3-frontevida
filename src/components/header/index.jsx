@@ -9,6 +9,7 @@ function Header() {
             <div className='menu'>
             <Link  to='/'>Home</Link>
             <Link  to='/quempodedoar'>Quem pode doar?</Link>
+            <Link  to='/proximidade'>Hemocentros próximos</Link>
             </div>
         </header>
     )

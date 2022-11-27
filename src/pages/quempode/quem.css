@@ -78,9 +78,9 @@ th {
     font-weight: bolder;
 }
 
-.article ul, li{
-    text-align: justify;
-    text-indent: 50px;  
+article ul, li{
+    text-align: left;
+    text-indent: 5px;  
     padding: 2px;
     list-style-position: inside;
 }
