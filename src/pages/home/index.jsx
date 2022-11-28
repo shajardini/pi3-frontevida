@@ -16,7 +16,7 @@ console.log("Hoje é dia " + dia + "/" + mes + " de " + ano + ". Agora são " + 
 export default function Home() {
     const [estado, setEstado] = useState([])
 
-    useEffect(() => {//'https://api.themoviedb.org/3/movie/now_playing'
+    useEffect(() => {
         async function loadEstado() {
             const response = await api.get('/')
 

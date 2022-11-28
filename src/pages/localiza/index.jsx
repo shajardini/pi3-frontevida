@@ -1,5 +1,4 @@
-
-import Mapa from "../../components/map";
+import Mapa from "../../components/map"
 
 export default function Localiza(){
     return (
