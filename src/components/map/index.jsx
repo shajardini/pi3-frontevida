@@ -6,6 +6,33 @@ import pin from '../../images/iconemap.png'
 
 
 
+if (!navigator.geolocation) {
+    alert('Não foi possível obter a sua geolocalização');
+}
+
+
+var posicao={} 
+
+navigator.geolocation.getCurrentPosition(function (position) {
+
+    posicao={
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    }
+    
+//   var lat = position.coords.latitude
+//   var lng= position.coords.longitude
+
+  return posicao
+
+});
+
+// const center = {
+//     lat: lat,
+//     lng: lng
+// }
+
+
 
 
 export default function Mapa() {
@@ -13,29 +40,8 @@ export default function Mapa() {
     const [searchBox, setSearchBox] = useState()
     const [places, setPlaces] = useState([])
     const [selectedPlace, setSelectedPlace] = useState()
-    const [lat, setLat] = useState()
-const [lng, setlng] = useState()
-
-if (!navigator.geolocation) {
-    alert('Não foi possível obter a sua geolocalização');
-    return;
-}
 
 
-
-
-navigator.geolocation.getCurrentPosition(function (position) {
-
-   setLat(position.coords.latitude) 
-   setlng(position.coords.longitude)
-
-
-});
-
-const center = {
-    lat: lat,
-    lng: lng
-}
     const handleOnPlacesChanged = () => {
         const searchBoxPlaces = searchBox.getPlaces()
         const place = searchBoxPlaces[0]
@@ -59,7 +65,7 @@ const center = {
             <div className='map'>
                 <GoogleMap
                     onLoad={setMap}
-                    center={center}  zoom={16} mapContainerStyle={{ width: "100%", height: "100%" }}>
+                    center={posicao}  zoom={16} mapContainerStyle={{ width: "100%", height: "100%" }}>
                         
                        
                    
