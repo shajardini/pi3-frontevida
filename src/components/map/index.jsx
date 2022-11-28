@@ -1,19 +1,41 @@
 import { useState } from 'react';
 import { LoadScript, GoogleMap, Marker, StandaloneSearchBox, InfoWindow } from '@react-google-maps/api'
 import './map.css'
+import pin from '../../images/iconemap.png'
 
-//, 
-const center = {
-    lat: -23.557378049987378,
-    lng: -46.66869453157437
-}
+
+
+
+
 
 export default function Mapa() {
     const [map, setMap] = useState()
     const [searchBox, setSearchBox] = useState()
     const [places, setPlaces] = useState([])
     const [selectedPlace, setSelectedPlace] = useState()
+    const [lat, setLat] = useState()
+const [lng, setlng] = useState()
 
+if (!navigator.geolocation) {
+    alert('Não foi possível obter a sua geolocalização');
+    return;
+}
+
+
+
+
+navigator.geolocation.getCurrentPosition(function (position) {
+
+   setLat(position.coords.latitude) 
+   setlng(position.coords.longitude)
+
+
+});
+
+const center = {
+    lat: lat,
+    lng: lng
+}
     const handleOnPlacesChanged = () => {
         const searchBoxPlaces = searchBox.getPlaces()
         const place = searchBoxPlaces[0]
@@ -37,8 +59,10 @@ export default function Mapa() {
             <div className='map'>
                 <GoogleMap
                     onLoad={setMap}
-                    center={center} zoom={16} mapContainerStyle={{ width: "100%", height: "100%" }}>
-
+                    center={center}  zoom={16} mapContainerStyle={{ width: "100%", height: "100%" }}>
+                        
+                       
+                   
                     <div className='search-box-container'>
                         <div className='search-box-layer'>
                             <StandaloneSearchBox onLoad={setSearchBox} onPlacesChanged={handleOnPlacesChanged}>
@@ -50,10 +74,10 @@ export default function Mapa() {
                     {places.map((place, index) => (
                         <>
                             {place.geometry && place.geometry.location ? (
+                               
+                                <Marker key={index} position={place.geometry.location} onClick={() => setSelectedPlace(place)} icon={pin}>
 
-                                <Marker key={index} position={place.geometry.location} onClick={() => setSelectedPlace(place)}>
-
-                                    {selectedPlace ? (<InfoWindow key={`info-window-${index}`} onCloseClick={() => setSelectedPlace(null)}>
+                                    {selectedPlace && selectedPlace === place? (<InfoWindow key={`info-window-${index}`} onCloseClick={() => setSelectedPlace(null)}>
                                         <div>
                                             <h1>InfoWindow</h1>
                                             <p>{selectedPlace.formatted_address}</p>

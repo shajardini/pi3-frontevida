@@ -1,5 +1,6 @@
 import Mapa from "../../components/map"
 
+
 export default function Localiza(){
     return (
         <div>
