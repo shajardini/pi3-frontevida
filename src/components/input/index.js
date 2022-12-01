@@ -1,6 +1,10 @@
 import './input.css'
 
-export default function Input(){
+type InputProps={
+  placeholder: String
+}
 
-  return <input type="text" className='my-input' />
+export default function Input({placeholder}:InputProps){
+
+  return <input type="text" className='my-input' placeholder={placeholder}/>
 }

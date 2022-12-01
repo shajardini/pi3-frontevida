@@ -81,7 +81,7 @@ export default function Mapa() {
                                 <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button>
                             </nav>
                             {activetab === TABS.search? <SearchBox onLoad={setSearchBox} 
-                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox/> : null}
+                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=>{}}/> : null}
                         </div>
                     </div>
 

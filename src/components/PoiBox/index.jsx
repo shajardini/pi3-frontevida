@@ -1,5 +1,6 @@
 import { useState} from "react"
 import SearchBox from '../searchBox';
+import Input from '../input'
 
 type PoiBoxProps = {
     onPlaceSelected: (place: google.maps.places.PlaceResult) => void;
@@ -20,7 +21,10 @@ export default function POIbox({onPlaceSelected}: PoiBoxProps) {
         <SearchBox onLoad={setSearchBox}
             onPlacesChanged={handleOnPlacesChanged} />
 
-
+        <Input placeholder="Endereço"/>
+        <Input placeholder="Nome"/>
+        <Input placeholder="Descrição"/>
+       
     </>
 
     )
