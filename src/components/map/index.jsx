@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { LoadScript, GoogleMap, Marker, StandaloneSearchBox, InfoWindow } from '@react-google-maps/api'
+import { LoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import './map.css'
 import pin from '../../images/iconemap.png'
+import SearchBox from '../searchBox';
+import POIbox from '../PoiBox';
 
 
 
@@ -32,7 +34,10 @@ navigator.geolocation.getCurrentPosition(function (position) {
 //     lng: lng
 // }
 
-
+const TABS ={
+    search: 0,
+    poi: 1
+}
 
 
 export default function Mapa() {
@@ -40,7 +45,7 @@ export default function Mapa() {
     const [searchBox, setSearchBox] = useState()
     const [places, setPlaces] = useState([])
     const [selectedPlace, setSelectedPlace] = useState()
-
+    const [activetab, setActiveTab] = useState(TABS.search)
 
     const handleOnPlacesChanged = () => {
         const searchBoxPlaces = searchBox.getPlaces()
@@ -71,9 +76,12 @@ export default function Mapa() {
                    
                     <div className='search-box-container'>
                         <div className='search-box-layer'>
-                            <StandaloneSearchBox onLoad={setSearchBox} onPlacesChanged={handleOnPlacesChanged}>
-                                <input type="text" className='search-box-input' />
-                            </StandaloneSearchBox>
+                            <nav>
+                                <button className={activetab === TABS.search? "active" : ""} onClick={()=> setActiveTab(TABS.search)}>Busca</button>
+                                <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button>
+                            </nav>
+                            {activetab === TABS.search? <SearchBox onLoad={setSearchBox} 
+                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox/> : null}
                         </div>
                     </div>
 
