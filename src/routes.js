@@ -4,7 +4,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import QuemPode from './pages/quempode'
 import Localiza from './pages/localiza'
-
+import Links from './components/links'
 
 
 export default function RouteApp(){
@@ -18,6 +18,7 @@ export default function RouteApp(){
                 <Route path='/quempodedoar' element={<QuemPode/>}/>
                 <Route path='/proximidade' element={<Localiza/>}/>
             </Routes>
+            <Links/>
             <Footer/>
         </BrowserRouter>
     )

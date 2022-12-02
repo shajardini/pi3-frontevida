@@ -54,14 +54,16 @@ export default function Mapa() {
 
         const newPlaces = [...places, place]
         setPlaces(newPlaces)
+        mapPanTo(place)
+    }
 
+
+    const mapPanTo = (place: google.maps.places.PlaceResult)=>{
         if (place.geometry && place.geometry.location) {
 
             map.panTo(place.geometry.location)
         }
     }
-
-
 
     return (
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ""}
@@ -81,7 +83,7 @@ export default function Mapa() {
                                 <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button>
                             </nav>
                             {activetab === TABS.search? <SearchBox onLoad={setSearchBox} 
-                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=>{}}/> : null}
+                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=> mapPanTo(place)}/> : null}
                         </div>
                     </div>
 

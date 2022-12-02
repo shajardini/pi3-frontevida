@@ -1,9 +1,9 @@
 footer {
      background: #ffa492;
-     position: absolute;
      text-align: center;
      padding: 5px;  
      width: 100%;
+     margin-top: 0px;
    }
 
 footer > p{

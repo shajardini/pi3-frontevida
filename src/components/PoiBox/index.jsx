@@ -1,6 +1,8 @@
 import { useState} from "react"
 import SearchBox from '../searchBox';
 import Input from '../input'
+import './poi.css'
+import {useForm} from 'react-hook-form'
 
 type PoiBoxProps = {
     onPlaceSelected: (place: google.maps.places.PlaceResult) => void;
@@ -9,23 +11,32 @@ type PoiBoxProps = {
 
 export default function POIbox({onPlaceSelected}: PoiBoxProps) {
     const [searchBox, setSearchBox] = useState()
+    const {register, handleSubmit, setValue }=useForm()
 
     const handleOnPlacesChanged = () => {
         const searchBoxPlaces = searchBox.getPlaces()
         const place = searchBoxPlaces[0]
         if (place.geometry && place.geometry.location) {
-            onPlaceSelected(place)
+            onPlaceSelected(place);
+            setValue("address", place.formatted_address || "")
         }
     }
-    return (<>
+
+    const save = (data: any) =>{
+        console.log(data)
+    }
+    return (
+    
+    <form onSubmit={handleSubmit(save)}>
         <SearchBox onLoad={setSearchBox}
             onPlacesChanged={handleOnPlacesChanged} />
 
-        <Input placeholder="Endereço"/>
-        <Input placeholder="Nome"/>
-        <Input placeholder="Descrição"/>
+        <Input placeholder="Endereço" register={register} name="address"/>
+        <Input placeholder="Nome"register={register} name="name"/>
+        <Input placeholder="Descrição" register={register} name="description"/>
+        <button className="button-poi-save" type="submit">Salvar</button>
        
-    </>
+    </form>
 
     )
 }

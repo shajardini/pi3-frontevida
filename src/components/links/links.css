@@ -1,0 +1,55 @@
+.aside{
+    text-align: center;
+    margin: 0px;
+}
+
+.container-aside{
+    
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    margin: auto;
+    background-image: linear-gradient(to bottom, var(--color4), #ffa492);
+    height: 100px;
+    box-shadow:1px -2px 20px 4px black;
+    
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+    /* margin: 5px 10px; */
+   
+   
+}
+
+
+
+.col-md-4{
+
+  flex-direction: column;
+  width: 30%;
+  font-size: 1.2em;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.col-md-4:hover{
+  border-bottom: 2px solid black;
+
+}
+
+.col-md-4 a{
+  text-decoration: none;
+}
+
+
+@media(max-width: 800px){
+    
+    .row{
+      flex-direction: column;
+    }
+
+  }
