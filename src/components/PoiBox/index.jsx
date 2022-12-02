@@ -22,16 +22,17 @@ export default function POIbox({onPlaceSelected}: PoiBoxProps) {
         }
     }
 
-    const save = (data: any) =>{
+    const save = (data) =>{
         console.log(data)
     }
     return (
     
     <form onSubmit={handleSubmit(save)}>
         <SearchBox onLoad={setSearchBox}
-            onPlacesChanged={handleOnPlacesChanged} />
+            onPlacesChanged={handleOnPlacesChanged} 
+            register={register} name="address"/>
 
-        <Input placeholder="Endereço" register={register} name="address"/>
+       
         <Input placeholder="Nome"register={register} name="name"/>
         <Input placeholder="Descrição" register={register} name="description"/>
         <button className="button-poi-save" type="submit">Salvar</button>
