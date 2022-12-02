@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../../services/api"
-import { Link } from "react-router-dom"
 import './home.css'
-import img from '../../images/doe.png'
+
 
 var dataAtual = new Date();
 var dia = dataAtual.getDate();
