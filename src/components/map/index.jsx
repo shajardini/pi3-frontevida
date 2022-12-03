@@ -4,6 +4,7 @@ import './map.css'
 import pin from '../../images/iconemap.png'
 import SearchBox from '../searchBox';
 import POIbox from '../PoiBox';
+import { json } from 'react-router-dom';
 
 
 
@@ -69,7 +70,7 @@ export default function Mapa() {
     }
 
     const updatePois = ()=>{
-        fetch("https://bancoevida.herokuapp.com/v1/poi",{
+        fetch("http://localhost:3001/v1/poi",{
             headers:{
                 "Content-Type": "application/json",
 
@@ -92,7 +93,8 @@ export default function Mapa() {
     },[])
 
     return (
-        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ""}
+        
+        <><LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ""}
             libraries={["places"]}
         >
             <div className='map'>
@@ -150,5 +152,23 @@ export default function Mapa() {
 
             </div>
         </LoadScript>
+        <div className='container-locais'>
+            <h2>Locais</h2>
+            <div className ='container-dados'>
+            {pois.map(
+                (local)=>{
+                    return (
+                        <div className="locais">
+                            <p className='destaque'><strong>{local.name}</strong></p>
+                            <p><strong>Endereço:</strong>{local.address}</p>
+                            <p><strong>Horário:</strong>{local.description}</p>
+
+                        </div>
+                )
+            })}
+            </div>
+        </div>
+
+        </>
     )
 }

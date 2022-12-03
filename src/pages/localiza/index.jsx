@@ -1,11 +1,15 @@
 import Mapa from "../../components/map"
+import './localiza.css'
+
 
 
 export default function Localiza(){
     return (
-        <div>
+        <div className="container-localiza">
             <h1>Locais na proximidade</h1>
+            
             <Mapa/>
+           
         </div>
     )
 } ;
