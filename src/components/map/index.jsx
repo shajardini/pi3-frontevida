@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import './map.css'
 import pin from '../../images/iconemap.png'
@@ -47,6 +47,9 @@ export default function Mapa() {
     const [selectedPlace, setSelectedPlace] = useState()
     const [activetab, setActiveTab] = useState(TABS.search)
 
+    const [pois, setPois] = useState([])
+    const [poiSelected, setPoiSelected] = useState()
+
     const handleOnPlacesChanged = () => {
         const searchBoxPlaces = searchBox.getPlaces()
         const place = searchBoxPlaces[0]
@@ -64,6 +67,29 @@ export default function Mapa() {
             map.panTo(place.geometry.location)
         }
     }
+
+    const updatePois = ()=>{
+        fetch("https://bancoevida.herokuapp.com/",{
+            headers:{
+                "Content-Type": "application/json",
+
+            },
+            method: "GET", 
+            }).then(async(response)=>{
+                const json = await response.json()
+                if(response.ok){
+                    console.log(json.pois)
+                   setPois(json.pois)
+                }else{
+                    console.log("Erro",json.message)
+                }
+            })
+    }
+
+   
+    useEffect(()=>{
+        updatePois();
+    },[])
 
     return (
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ""}
@@ -83,7 +109,7 @@ export default function Mapa() {
                                 <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button>
                             </nav>
                             {activetab === TABS.search? <SearchBox onLoad={setSearchBox} 
-                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=> mapPanTo(place)}/> : null}
+                            onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=> mapPanTo(place)} onPoiSaved={updatePois}/> : null}
                         </div>
                     </div>
 
@@ -108,7 +134,18 @@ export default function Mapa() {
                         </>
 
                     ))}
-
+                {pois.map((poi, index)=>(
+                    <Marker key={index} position={{lat: poi.lat, lng: poi.lng}} onClick={() => setPoiSelected(poi)} icon={pin}>
+                        {poiSelected && poiSelected === poi? (<InfoWindow key={`info-window-${index}`} onCloseClick={() => setSelectedPlace(null)}>
+                                        <div>
+                                            <h1>{poiSelected.name}</h1>
+                                            <div><strong>Endereço:</strong>{poiSelected.address}</div>
+                                            <div><strong>Nome:</strong>{poiSelected.name}</div>
+                                            <div><strong>Descrição:</strong>{poiSelected.description}</div>
+                                        </div>
+                                    </InfoWindow>) : null}
+                    </Marker>
+                ))}
                 </GoogleMap>
 
             </div>

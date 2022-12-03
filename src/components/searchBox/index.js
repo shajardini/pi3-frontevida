@@ -6,8 +6,8 @@ import {FieldValues, UseFormRegister} from 'react-hook-form'
 type SearchBoxProps = {
     onLoad: (SearchBox: google.maps.places.SearchBox) => void;
     onPlacesChanged: () => void;
-    name: String;
-    register?: UseFormRegister<FieldValues>
+    register: UseFormRegister<FieldValues>;
+    name: string;
 }
 
 export default function SearchBox({onLoad, onPlacesChanged, register, name}:SearchBoxProps) {

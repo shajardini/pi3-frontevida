@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
     const api = axios.create({
-        baseURL: 'https://posicaoevida.herokuapp.com/'
+        baseURL: 'https://posicaoevida2.herokuapp.com/'
     })//parte que não vai mudar
 
 export default api
