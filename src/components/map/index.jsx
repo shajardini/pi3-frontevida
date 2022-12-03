@@ -14,21 +14,24 @@ if (!navigator.geolocation) {
 }
 
 
-var posicao={} 
+var posicao={
+    lat: -23.5113,
+    lng: -46.8768
+} 
 
-navigator.geolocation.getCurrentPosition(function (position) {
+// navigator.geolocation.getCurrentPosition(function (position) {
 
-    posicao={
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    }
+//     posicao={
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude
+//     }
     
-//   var lat = position.coords.latitude
-//   var lng= position.coords.longitude
+// //   var lat = position.coords.latitude
+// //   var lng= position.coords.longitude
 
-  return posicao
+//   return posicao
 
-});
+// });
 
 // const center = {
 //     lat: lat,
@@ -100,7 +103,7 @@ export default function Mapa() {
             <div className='map'>
                 <GoogleMap
                     onLoad={setMap}
-                    center={posicao}  zoom={16} mapContainerStyle={{ width: "100%", height: "100%" }}>
+                    center={posicao}  zoom={10} mapContainerStyle={{ width: "100%", height: "100%" }}>
                         
                        
                    
@@ -108,7 +111,7 @@ export default function Mapa() {
                         <div className='search-box-layer'>
                             <nav>
                                 <button className={activetab === TABS.search? "active" : ""} onClick={()=> setActiveTab(TABS.search)}>Busca</button>
-                                <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button>
+                                {/* <button className={activetab === TABS.poi? "active" : ""} onClick={()=> setActiveTab(TABS.poi)}>POI</button> */}
                             </nav>
                             {activetab === TABS.search? <SearchBox onLoad={setSearchBox} 
                             onPlacesChanged={handleOnPlacesChanged}/>: activetab === TABS.poi ? <POIbox onPlaceSelected={(place)=> mapPanTo(place)} onPoiSaved={updatePois}/> : null}
