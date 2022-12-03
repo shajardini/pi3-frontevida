@@ -29,7 +29,7 @@ export default function POIbox({onPlaceSelected, onPoiSaved}: PoiBoxProps) {
 
     const save = (data:any) =>{
         console.log(data)
-        fetch("http://localhost:3001/v1/poi",{
+        fetch("https://bancoevida.herokuapp.com/v1/poi",{
             headers:{
                 "Content-Type": "application/json",
 
