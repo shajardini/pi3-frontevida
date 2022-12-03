@@ -69,7 +69,7 @@ export default function Mapa() {
     }
 
     const updatePois = ()=>{
-        fetch("https://bancoevida.herokuapp.com/",{
+        fetch("https://bancoevida.herokuapp.com/v1/poi",{
             headers:{
                 "Content-Type": "application/json",
 
